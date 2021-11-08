@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
       // const token =
       if (data.acknowledged) {
         res.send({
-          message: "Account Created",
+          message: "Account Created!! Login to continue",
         });
       }
     }
@@ -58,7 +58,7 @@ router.post("/login", async (req, res) => {
         message: "Email or Password Incorrect",
       });
     } else {
-      if (user.status === "Active") {
+      if (user.Status) {
         const hashPwd = user.Password;
         const pwdCompare = await hashCompare(req.body.Password, hashPwd);
         if (pwdCompare) {
